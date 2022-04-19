@@ -18,11 +18,8 @@ app.post('/addition', (req, res) => {
         res.status(400).json({ error: 'Os valores precisam estar no formato Number' });
     } else {
         const resultAddition = value1 + value2;
-        res.status(201).json(resultAddition);
+        res.status(200).json(resultAddition);
     }
-
-    /*   const resultValue1 = Number(value1);
-    const resultValue2 = Number(value2); */
 });
 
 app.post('/subtraction', (req, res) => {
@@ -32,7 +29,7 @@ app.post('/subtraction', (req, res) => {
         res.status(400).json({ error: 'Os valores precisam estar no formato Number' });
     } else {
         const resultSubtracion = value1 - value2;
-        res.status(201).json(resultSubtracion);
+        res.status(200).json(resultSubtracion);
     }
 });
 
@@ -43,7 +40,7 @@ app.post('/division', (req, res) => {
         res.status(400).json({ error: 'Os valores precisam estar no formato Number' });
     } else {
         const resultDivision = value1 / value2;
-        res.status(201).json(resultDivision);
+        res.status(200).json(resultDivision);
     }
 });
 
@@ -54,7 +51,7 @@ app.post('/multiplication', (req, res) => {
         res.status(400).json({ error: 'Os valores precisam estar no formato Number' });
     } else {
         const resultMultiplication = value1 * value2;
-        res.status(201).json(resultMultiplication);
+        res.status(200).json(resultMultiplication);
     }
 });
 
