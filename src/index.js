@@ -54,6 +54,8 @@ app.post('/multiplication', (req, res) => {
     res.status(201).json(resultMultiplication);
 });
 
-app.listen(3000, () => {
-    console.info('O servidor foi iniciado na URL: http://localhost:3000');
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.info(PORT);
 });
