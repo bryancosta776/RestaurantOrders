@@ -11,7 +11,6 @@ app.get('/calculator', (req, res) => {
 });
 
 app.post('/addition', (req, res) => {
-    // req.body - variaveis foram modificadas como const
     const { value1, value2 } = req.body;
 
     if (typeof value1 !== 'number' || typeof value2 !== 'number') {
