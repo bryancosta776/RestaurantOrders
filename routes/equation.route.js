@@ -4,10 +4,10 @@ const router = express.Router();
 
 router.use(express.json());
 
-const equationsRouterAdd = require('../controller/equationAdditionController');
-const equationsRouterSub = require('../controller/equationSubtracionController');
-const equationsRouterMult = require('../controller/equationMultiplicationController');
-const equationsRouterDivi = require('../controller/equationDivisionController');
+const equationsRouterAdd = require('../controller/additionController');
+const equationsRouterSub = require('../controller/subtracionController');
+const equationsRouterMult = require('../controller/multiplicationController');
+const equationsRouterDivi = require('../controller/divisionController');
 
 router.post('/addition', equationsRouterAdd);
 router.post('/subtraction', equationsRouterSub);
