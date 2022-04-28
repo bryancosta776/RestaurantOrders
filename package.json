@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/bryancosta776/CalculatorBackEnd#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "^8.13.0",
