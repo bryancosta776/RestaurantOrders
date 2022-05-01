@@ -4,20 +4,26 @@ const router = express.Router();
 
 const userSchemaYup = require('../models/Yup');
 
-router.post('/division', (req, res) => {
+router.post('/division', async (req, res) => {
     const { value1, value2 } = req.body;
 
-    userSchemaYup.validate(
+    const resultUserDivi = userSchemaYup.validate(
         {
             value1,
             value2,
         },
 
         { strict: true },
-    ).then(() => {
-        const resultDivision = value1 / value2;
-        return res.status(200).json(resultDivision);
-    }).catch(err => res.status(400).json({ err: err.errors }));
+    );
+    try {
+        const resultFinalMultiplicion = await resultUserDivi;
+        if (resultFinalMultiplicion) {
+            const result = value1 / value2;
+            res.status(200).json(result);
+        }
+    } catch (error) {
+        res.status(400).json({ error: 'Os values precisam estar no formato number' });
+    }
 });
 
 module.exports = router;
