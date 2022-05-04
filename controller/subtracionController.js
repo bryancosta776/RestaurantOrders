@@ -24,10 +24,6 @@ router.post('/subtraction', async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: 'Os values precisam estar no formato number' });
     }
-    /* .then(() => {
-        const resultSubtracion = value1 - value2;
-        return res.status(200).json(resultSubtracion);
-    }).catch(err => res.status(400).json({ err: err.errors })) */
 });
 
 module.exports = router;
