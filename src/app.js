@@ -1,5 +1,6 @@
 const express = require('express');
 const equationRoutes = require('../routes/equation.route');
+require('../models/config/database');
 
 const app = express();
 
