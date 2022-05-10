@@ -16,13 +16,11 @@ router.post('/division', async (req, res) => {
         { strict: true },
     );
     try {
-        const resultFinalMultiplicion = await resultUserDivi;
-        if (resultFinalMultiplicion) {
-            const result = value1 / value2;
-            res.status(200).json(result);
-        }
-    } catch (error) {
-        res.status(400).json({ error: 'Os values precisam estar no formato number' });
+        const resultDivision = await resultUserDivi;
+        const resultFinalDivision = resultDivision.value1 / resultDivision.value2;
+        res.status(200).json(resultFinalDivision);
+    } catch (erro) {
+        res.status(400).json({ erro: 'Os values precisam estar no formato number' });
     }
 });
 
