@@ -19,8 +19,8 @@ router.post('/subtraction', async (req, res) => {
         const resultSubtracion = await resultUserSchema;
         const resultFinalSubtracion = resultSubtracion.value1 - resultSubtracion.value2;
         res.json(200).json(resultFinalSubtracion);
-    } catch (erro) {
-        res.status(400).json({ erro: 'Os values precisam estar no formato number' });
+    } catch (error) {
+        res.status(400).json({ error: 'Values must be in number format' });
     }
 });
 

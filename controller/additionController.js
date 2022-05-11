@@ -19,8 +19,8 @@ router.post('/addition', async (req, res) => {
         const resultAddition = await resultUserSchemaAdd;
         const resultFinalAddition = resultAddition.value1 + resultAddition.value2;
         res.status(200).json(resultFinalAddition);
-    } catch (erro) {
-        res.status(400).json({ erro: 'Os values precisam estar no formato number' });
+    } catch (error) {
+        res.status(400).json({ error: 'Values must be in number format' });
     }
 });
 

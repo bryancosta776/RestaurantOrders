@@ -20,8 +20,8 @@ router.post('/multiplication', async (req, res) => {
         const resultMultiplicacion = await resultUserSchemaMult;
         const resultFinalMultiplicaion = resultMultiplicacion.value1 * resultMultiplicacion.value2;
         res.status(200).json(resultFinalMultiplicaion);
-    } catch (erro) {
-        res.status(400).json({ erro: 'Os values precisam estar no formato number' });
+    } catch (error) {
+        res.status(400).json({ error: 'Values must be in number format' });
     }
 });
 
