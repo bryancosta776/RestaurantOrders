@@ -2,14 +2,27 @@ const express = require('express');
 
 const router = express.Router();
 
-router.post('/multiplication', (req, res) => {
+const userSchemaYup = require('../models/Yup');
+
+router.post('/multiplication', async (req, res) => {
     const { value1, value2 } = req.body;
 
-    if (typeof value1 !== 'number' || typeof value2 !== 'number') {
-        return res.status(400).json({ error: 'Os valores precisam estar no formato Number' });
+    const resultUserSchemaMult = userSchemaYup.validate(
+        {
+            value1,
+            value2,
+        },
+
+        { strict: true },
+    );
+
+    try {
+        const resultMultiplicacion = await resultUserSchemaMult;
+        const resultFinalMultiplicaion = resultMultiplicacion.value1 * resultMultiplicacion.value2;
+        res.status(200).json(resultFinalMultiplicaion);
+    } catch (error) {
+        res.status(400).json({ error: 'Values must be in number format' });
     }
-    const resultMultiplication = value1 * value2;
-    return res.status(200).json(resultMultiplication);
 });
 
 module.exports = router;
