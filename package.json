@@ -20,6 +20,8 @@
   "homepage": "https://github.com/bryancosta776/CalculatorBackEnd#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
