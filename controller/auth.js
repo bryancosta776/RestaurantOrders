@@ -1,6 +1,6 @@
 const userSchemaYup = require('../models/Yup');
 
-function Yupvalidation(err, req, res, next) {
+function validator(err, req, res, next) {
     const { value1, value2 } = req.body;
 
     try {
@@ -13,11 +13,10 @@ function Yupvalidation(err, req, res, next) {
             { strict: true },
 
         );
-
         next();
     } catch (error) {
-        res.status(400).json({ error: err });
+        res.json({ err: error });
+        next(err);
     }
 }
-
-module.exports = Yupvalidation;
+module.exports = validator;
