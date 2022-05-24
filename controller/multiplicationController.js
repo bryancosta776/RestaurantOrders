@@ -8,7 +8,7 @@ router.post('/multiplication', validator, (req, res) => {
         const resultFinalMultiplicaion = req.body.value1 * req.body.value2;
         res.status(200).json(resultFinalMultiplicaion);
     } catch {
-        res.json(400).json(req.err);
+        res.status(400).json(req.err);
     }
 });
 module.exports = router;
