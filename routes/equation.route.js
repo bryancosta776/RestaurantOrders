@@ -1,18 +1,23 @@
 const express = require('express');
 
 const router = express.Router();
+const validator = require('../controller/validator');
+const errorMiddleware = require('../controller/errorMiddleware');
 
 router.use(express.json());
 
-const equationsRouterAdd = require('../controller/additionController');
-const equationsRouterSub = require('../controller/subtracionController');
-const equationsRouterMult = require('../controller/multiplicationController');
-const equationsRouterDivi = require('../controller/divisionController');
-const equationsHistory = require('../controller/registerController');
+const addCtrl = require('../controller/additionController');
+const subCtrl = require('../controller/subtracionController');
+const multCtrl = require('../controller/multiplicationController');
+const divCtrl = require('../controller/divisionController');
+const regCtrl = require('../controller/registerController');
 
-router.post('/addition', equationsRouterAdd);
-router.post('/subtraction', equationsRouterSub);
-router.post('/multiplication', equationsRouterMult);
-router.post('/division', equationsRouterDivi);
-router.get('/search', equationsHistory);
+router.post('/addition', validator, addCtrl);
+// router.post('/subtraction', subCtrl);
+// router.post('/multiplication', multCtrl);
+// router.post('/division', divCtrl);
+// router.get('/search', regCtrl);
+
+router.use(errorMiddleware);
+
 module.exports = router;
