@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-
+const resultCalculator = require('../models/config/resultCalculator');
 
 router.post('/subtraction', async (req, res, next) => {
 
@@ -11,7 +11,9 @@ router.post('/subtraction', async (req, res, next) => {
 
         result = value1 - value2;
 
-        res.status(200).json(result);
+        const resultFinalSubtracion = await  resultCalculator.create({ result });
+
+        res.status(200).json(resultFinalSubtracion);
     } catch (error) {
         next(error);
     }
