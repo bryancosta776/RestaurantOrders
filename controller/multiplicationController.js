@@ -10,12 +10,15 @@ router.post('/multiplication', async (req, res) => {
 
     result = value1 * value2;
 
-    const resultFinalMultiplicacion = await resultCalculator.create({ result });
+    const resultFinalMultiplicacion = await resultCalculator.create({
+      value1: value1,
+      value2: value2,
+      operation: 'Multiplicacion',
+      result
+    });
 
     res.status(200).json(resultFinalMultiplicacion);
-
-
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 });
