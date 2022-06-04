@@ -1,0 +1,31 @@
+version: '3.8'
+
+networks:
+
+  mynetwork:
+    driver: bridge
+
+services:
+
+
+  mynodejs:
+    container_name: MY_NODEJS
+    build:
+      context: .
+    command: npm run dev
+    ports:
+      - 3000:3000
+    networks:
+      - mynetwork
+  mongo:
+    image: mongo
+    restart: always
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+
+
+
