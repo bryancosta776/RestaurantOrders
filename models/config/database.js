@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
 exports.initDatabase = () =>
-mongoose.connect('mongodb://localhost/calculator', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
+  mongoose.connect('mongodb://root:example@localhost:27017/calc?authSource=admin', {
+    useNewUrlParser: true
+  });
