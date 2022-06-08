@@ -1,7 +1,7 @@
-
 const mongoose = require('mongoose');
+const moment = require('moment');
 
-const resultCalculator = mongoose.Schema({
+const operations = mongoose.Schema({
   value1: {
     type: Number,
     required: true
@@ -18,11 +18,10 @@ const resultCalculator = mongoose.Schema({
     type: Number,
     required: true
   },
-  date: {
+  created: {
     type: Date,
-    default: Date.now
+    default: moment().utc(true)
   }
+}, { versionKey: false });
 
-});
-
-module.exports = mongoose.model('ResultCalculator', resultCalculator);
+module.exports = mongoose.model('operations', operations);

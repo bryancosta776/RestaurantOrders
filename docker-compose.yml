@@ -4,6 +4,7 @@ version: '3.8'
 services:
   mongo:
     image: mongo
+    container_name: mongo
     restart: always
     ports:
       - 27017:27017
@@ -15,13 +16,16 @@ services:
     image: mongo-express
     restart: always
     ports:
-      - 8081:27017
+      - 8081:8081
+    depends_on:
+      - mongo
     environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_BASICAUTH_USERNAME: root
-      ME_CONFIG_BASICAUTH_PASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+
+
 
   api:
     image: node:latest
@@ -33,10 +37,7 @@ services:
       - 3000:3000
     volumes:
       - .:/src/app
+    links:
+      - mongo
     working_dir: /src/app
     command: npm run dev
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "5"

@@ -1,6 +1,6 @@
 const express = require('express');
 
-const resultCalculator = require('../models/config/resultCalculator');
+const operation = require('../models/operationsModel');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.post('/division', async (req, res, next) => {
 
     result = value1 / value2;
 
-    const resultFinalDivision = await resultCalculator.create({
+    const resultFinalDivision = await operation.create({
       value1: value1,
       value2: value2,
       operation: 'Division',

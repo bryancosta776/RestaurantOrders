@@ -1,8 +1,8 @@
-const userSchemaYup = require('../models/Yup');
+const operationsSchema = require('../schemas/operationsSchema');
 
 module.exports = async (req, res, next) => {
   try {
-    const result = userSchemaYup.validate(
+    const result = operationsSchema.validate(
       {
         ...req.body
       },

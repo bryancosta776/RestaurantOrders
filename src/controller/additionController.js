@@ -1,10 +1,8 @@
-
-
 const express = require('express');
 
 const router = express.Router();
 
-const resultCalculator = require('../models/config/resultCalculator');
+const operation = require('../models/operationsModel');
 
 
 router.post('/addition', async (req, res, next) => {
@@ -14,12 +12,11 @@ router.post('/addition', async (req, res, next) => {
 
     result = value1 + value2;
 
-    const resultFinalAddition = await resultCalculator.create({
+    const resultFinalAddition = await operation.create({
        value1: value1,
        value2: value2,
-       operation: 'Addtion',
+       operation: 'Addition',
        result
-
       });
 
     res.status(200).json(resultFinalAddition);

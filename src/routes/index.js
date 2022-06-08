@@ -21,3 +21,6 @@ router.get('/search', regCtrl);
 router.use(errorMiddleware);
 
 module.exports = router;
+
+// habilitar a pesquisa por tipo de operacao
+// criar um schema para a rota de lista
