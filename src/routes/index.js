@@ -11,12 +11,14 @@ const subCtrl = require('../controller/subtracionController');
 const multCtrl = require('../controller/multiplicationController');
 const divCtrl = require('../controller/divisionController');
 const regCtrl = require('../controller/registerController');
+const search = require('../controller/registerParams');
 
 router.post('/addition', validator, addCtrl);
 router.post('/subtraction', validator, subCtrl) ;
 router.post('/multiplication', validator, multCtrl);
 router.post('/division', validator, divCtrl);
 router.get('/search', regCtrl);
+router.get('/searchParams', search);
 
 router.use(errorMiddleware);
 
