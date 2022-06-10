@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const operation = require('../models/operationsModel');
+const operations = require('../models/operationsModel');
 
 
 router.post('/addition', async (req, res, next) => {
@@ -10,18 +10,17 @@ router.post('/addition', async (req, res, next) => {
   try {
     const { value1, value2 } = req.body;
 
-    result = value1 + value2;
+    resultAdd = value1 + value2;
 
-    const resultFinalAddition = await operation.create({
+    const resultFinalAdditio = await operations.create({
        value1: value1,
        value2: value2,
        operation: 'Addition',
-       result
+       result: resultAdd
       });
 
-    res.status(200).json(resultFinalAddition);
-
-    // SALVAR RESULTADO MONGAO
+    res.status(200).json({ resultFinalAdditio });
+    next();
 
   } catch (error) {
     next(error);

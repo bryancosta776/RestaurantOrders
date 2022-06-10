@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
-const equationRoutes = require('./routes/index');
+const equationRoutes = require('./routes/operationListController');
 const db = require('./database/index');
 
 const app = express();
