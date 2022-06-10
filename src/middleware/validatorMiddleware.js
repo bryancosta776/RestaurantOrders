@@ -1,18 +1,9 @@
-
-module.exports = (yupSchema) => async (req, res, next) =>  {
+module.exports = (yupSchema) => async (req, res, next) => {
   try {
-      const result = await yupSchema.validate(req);
-      req.body = result;
-      next();
+    await yupSchema.validateSync(req, { strict: true });
+
+    next();
   } catch (err) {
     next(err);
   }
 };
-
-
-
-
-
-
-
-

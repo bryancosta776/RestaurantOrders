@@ -1,22 +1,12 @@
-const express = require('express');
+const operationsModel = require('../models/operationsModel');
 
-const operationsSchema = require('../models/operationsModel');
-
-const router = express.Router();
-
-
-
-router.get('/searchParams',  async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { operations } = req.query;
-  try{
-    const resultOperations = await operationsSchema({ operations });
-    res.json(200).json(resultOperations);
-  }catch(error){
-    res.status(400).json(error);
+  try {
+    const resultOperations = await operationsModel({ operations });
+
+    return res.status(200).json(resultOperations);
+  } catch (error) {
+    return res.status(400).json(error);
   }
-
-});
-
-
-
-module.exports = router;
+};
