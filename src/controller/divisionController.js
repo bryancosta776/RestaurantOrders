@@ -1,10 +1,8 @@
-const express = require('express');
+
 
 const operation = require('../models/operationsModel');
 
-const router = express.Router();
-
-router.post('/division', async (req, res, next) => {
+module.exports =  async (req, res, next) => {
   try {
     const { value1, value2 } = req.body;
 
@@ -14,13 +12,13 @@ router.post('/division', async (req, res, next) => {
       value1: value1,
       value2: value2,
       operation: 'Division',
-      result
+      result: result
     });
 
-    res.status(200).json(resultFinalDivision);
+    res.status(200).json({ resultFinalDivision });
   } catch (error) {
     next(error);
   }
-});
+};
 
-module.exports = router;
+
