@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
       result
     });
 
-    res.status(200).json({ resultFinalSubtracion });
+    return res.status(200).json({ resultFinalSubtracion });
   } catch (error) {
     next(error);
   }

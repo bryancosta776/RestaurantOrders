@@ -13,7 +13,7 @@ const subCtrl = require('../controller/subtracionController');
 const multCtrl = require('../controller/multiplicationController');
 const divCtrl = require('../controller/divisionController');
 const regCtrl = require('../controller/registerController');
-const searchOperations = require('../controller/getParams');
+const searchOperations = require('../controller/getQuery');
 
 router.post('/addition', validatorMiddleware(userSchemaYup), addCtrl);
 router.post('/subtraction', validatorMiddleware(userSchemaYup), subCtrl);

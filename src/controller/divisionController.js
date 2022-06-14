@@ -1,8 +1,6 @@
-
-
 const operation = require('../models/operationsModel');
 
-module.exports =  async (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
     const { value1, value2 } = req.body;
 
@@ -15,10 +13,8 @@ module.exports =  async (req, res, next) => {
       result: result
     });
 
-    res.status(200).json({ resultFinalDivision });
+    return res.status(200).json({ resultFinalDivision });
   } catch (error) {
     next(error);
   }
 };
-
-
