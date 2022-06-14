@@ -1,10 +1,6 @@
-const express = require('express');
-
-const router = express.Router();
-
 const operation = require('../models/operationsModel');
 
-router.post('/multiplication', async (req, res) => {
+module.exports = async (req, res) => {
   try {
     const { value1, value2 } = req.body;
 
@@ -17,10 +13,8 @@ router.post('/multiplication', async (req, res) => {
       result
     });
 
-    res.status(200).json(resultFinalMultiplicacion);
+    return res.status(200).json({ resultFinalMultiplicacion });
   } catch (error) {
     next(error);
   }
-});
-
-module.exports = router;
+};

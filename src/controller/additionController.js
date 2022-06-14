@@ -1,31 +1,20 @@
-const express = require('express');
+const operations = require('../models/operationsModel');
 
-const router = express.Router();
-
-const operation = require('../models/operationsModel');
-
-
-router.post('/addition', async (req, res, next) => {
-
+module.exports = async (req, res, next) => {
   try {
     const { value1, value2 } = req.body;
 
-    result = value1 + value2;
+    resultAdd = value1 + value2;
 
-    const resultFinalAddition = await operation.create({
-       value1: value1,
-       value2: value2,
-       operation: 'Addition',
-       result
-      });
+    const resultFinalAdditio = await operations.create({
+      value1,
+      value2,
+      operation: 'Addition',
+      result: resultAdd
+    });
 
-    res.status(200).json(resultFinalAddition);
-
-    // SALVAR RESULTADO MONGAO
-
+    return res.status(200).json({ resultFinalAdditio });
   } catch (error) {
     next(error);
   }
-});
-
-module.exports = router;
+};
