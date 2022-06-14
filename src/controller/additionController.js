@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
     });
 
     res.status(200).json({ resultFinalAdditio });
-    next();
+
   } catch (error) {
     next(error);
   }

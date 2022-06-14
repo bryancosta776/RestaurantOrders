@@ -1,11 +1,18 @@
+
+
 const operationsSchema = require('../models/operationsModel');
 
+
 module.exports = async (req, res, next) => {
-  const { operations } = req.query;
   try {
-    const resultOperations = await operationsSchema({ operations });
-    return res.status(200).json(resultOperations);
+    const { operation }  = req.query;
+
+    const resultOperations = await operationsSchema.find({ operation });
+    res.status(200).json({ resultOperations });
+
   } catch (error) {
+    console.log(error);
     return res.status(400).json(error);
   }
 };
+

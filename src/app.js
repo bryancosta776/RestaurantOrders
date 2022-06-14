@@ -14,7 +14,7 @@ const PORT = 3000;
 app.listen(PORT, async () => {
   try {
     // eslint-disable-next-line no-console
-    // await db.initDatabase().then(() => console.log('connected'));
+     await db.initDatabase().then(() => console.log('connected'));
   } catch (error) {
     console.log(error);
     console.log('connection error');
