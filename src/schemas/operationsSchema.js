@@ -1,8 +1,8 @@
 const Yup = require('yup');
 
-const userSchemaYup = Yup.object({
+module.exports = Yup.object({
+  body: {
     value1: Yup.number().required(),
     value2: Yup.number().required()
+  }
 });
-
-module.exports = userSchemaYup;
