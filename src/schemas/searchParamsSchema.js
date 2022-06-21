@@ -1,7 +1,7 @@
-const Yup = require('yup');
+const Joi = require('joi');
 
-module.exports = Yup.object({
-  query: Yup.object({
-    operation: Yup.string().required()
+module.exports = Joi.object({
+  query: Joi.object({
+    operation: Joi.string().required()
   })
-});
+}).unknown(true);

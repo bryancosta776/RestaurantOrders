@@ -1,9 +1,10 @@
-module.exports = (yupSchema) => async (req, res, next) => {
-  try {
-    await yupSchema.validate(req, { strict: true });
+module.exports = (schema) => async (req, res, next) => {
+   const { error } = await schema.validate(req);
 
-    next();
-  } catch (err) {
-    next(err);
-  }
+   if(error){
+    return res.status(400).json({ error: error?.message }).end();
+   }
+
+    return next();
+
 };
