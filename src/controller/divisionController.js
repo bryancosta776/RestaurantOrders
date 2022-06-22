@@ -7,8 +7,8 @@ module.exports = async (req, res, next) => {
     result = value1 / value2;
 
     const resultFinalDivision = await operation.create({
-      value1: value1,
-      value2: value2,
+      value1,
+      value2,
       operation: 'Division',
       result: result
     });

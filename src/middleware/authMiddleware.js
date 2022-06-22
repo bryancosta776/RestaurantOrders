@@ -1,4 +1,4 @@
-const jwt = require('../controller/jwt');
+const jwt = require('../controller/jwt/jwt');
 const login = require('../models/loginModel');
 
 module.exports = async (req, res, next) => {

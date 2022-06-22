@@ -9,7 +9,7 @@ router.use(express.json());
 
 const users = require('./users');
 
-const operations = require('./operations');
+const operations = require('.operations');
 
 const regCtrl = require('../controller/registerController');
 
