@@ -1,4 +1,4 @@
-const jwt  = require('./jwt');
+const jwt  = require('../jwt/jwt');
 const login = require('../models/loginModel');
 
 
