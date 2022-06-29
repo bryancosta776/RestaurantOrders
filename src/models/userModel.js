@@ -1,7 +1,8 @@
 const crypto  =  require('crypto');
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const login = mongoose.Schema({
+const user = mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -19,8 +20,13 @@ const login = mongoose.Schema({
                 .createHash('md5')
                 .update(value)
                 .digest('hex')
-  }
+  },
+  payments:[{
+    type: Schema.Types.ObjectId,
+    ref:'payment'
+  }]
 }, { versionKey: false });
 
+// user model
 
-module.exports = mongoose.model('login', login);
+module.exports = mongoose.model('user', user);

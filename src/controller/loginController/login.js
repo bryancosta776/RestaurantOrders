@@ -1,5 +1,5 @@
-const login = require('../models/loginModel');
-const jwt  = require('..jwt/jwt');
+const login = require('../../models/userModel');
+const jwt  = require('../jwt/jwt');
 
 const  crypto  =  require('crypto');
 

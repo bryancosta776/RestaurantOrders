@@ -1,5 +1,5 @@
 const jwt  = require('../jwt/jwt');
-const login = require('../models/loginModel');
+const login = require('../../models/userModel');
 
 
 module.exports = async (req, res, next) => {
