@@ -9,9 +9,13 @@ module.exports = async (req, res, next) => {
 
     const { password, ...user } = result.toObject();
 
-    const token = jwt.sign({ user_id: user._id, email: result.email });
 
-    return res.status(200).json({ user, token });
+      const token = jwt.sign({ user_id: user._id, email: result.email });
+
+      return res.status(200).json({ user, token });
+
+
+
   } catch (error) {
     console.log(error);
     return res.status(401).json('Não deu certo');

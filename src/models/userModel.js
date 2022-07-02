@@ -26,8 +26,10 @@ const user = mongoose.Schema({
     ref:'payment'
   }],
   cpf: {
-    type: String,
-    required: true
+    type: String
+  },
+  cnpj: {
+    type: String
   }
 
 
