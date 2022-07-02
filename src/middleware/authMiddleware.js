@@ -2,8 +2,6 @@ const jwt = require('../controller/jwt/jwt');
 const login = require('../models/userModel');
 
 module.exports = async (req, res, next) => {
-
-
   try {
     const token = req.headers.authorization.split(' ');
 

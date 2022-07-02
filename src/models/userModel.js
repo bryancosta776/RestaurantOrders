@@ -24,7 +24,13 @@ const user = mongoose.Schema({
   payments:[{
     type: Schema.Types.ObjectId,
     ref:'payment'
-  }]
+  }],
+  cpf: {
+    type: String,
+    required: true
+  }
+
+
 }, { versionKey: false });
 
 // user model

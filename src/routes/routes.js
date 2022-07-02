@@ -6,10 +6,10 @@ const errorMiddleware = require('../middleware/errorMiddleware');
 
 router.use(express.json());
 
-const users = require('./users');
+const users = require('./usersRoutes');
 
-const operations = require('./operations');
-const payments = require('./payment');
+const operations = require('./operationsRoutes');
+const payments = require('./paymentRoutes');
 
 const regCtrl = require('../controller/registerController');
 
