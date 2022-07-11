@@ -5,7 +5,6 @@ module.exports = Joi.object({
     email: Joi.string().required(),
     name: Joi.string().required(),
     password: Joi.string().required(),
-    cpf: Joi.string().required(),
-    cnpj: Joi.string().required()
+    cpfCnpj: Joi.string().required()
   }
 }).unknown(true);

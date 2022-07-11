@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
  const [email, password]  = Buffer.from(hash, 'base64').toString().split(':');
 
  try {
-  const user = await login.findOne({ email });
+    const user = await login.findOne({ email });
 
    const encriptedPass = crypto.createHash('md5').update(password).digest('hex');
 

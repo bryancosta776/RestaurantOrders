@@ -14,10 +14,10 @@ const payment = mongoose.Schema({
   amount: {
     type: Number,
     required: true
+  },
+  paymentData:{
+    type: Schema.Types.Mixed
   }
 });
-
-
-// referenciar a model do usuario
 
 module.exports = mongoose.model('payment', payment);

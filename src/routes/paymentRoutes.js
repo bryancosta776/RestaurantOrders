@@ -1,10 +1,11 @@
 const express = require('express');
-
 const router = express.Router();
 
-const payment = require('../controller/paymentController');
+const authMiddleware = require('../middleware/authMiddleware');
 
-router.post('/paymentIntent', payment);
+const paymentCtr = require('../controller/paymentController');
+
+router.post('/paymentIntent', authMiddleware, paymentCtr);
 
 // router.post('/addition', validatorMiddleware(userSchemaYup), addCtrl);
 

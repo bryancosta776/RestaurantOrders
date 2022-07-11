@@ -20,6 +20,7 @@ const divCtrl = require('../controller/divisionController');
 const searchOperations = require('../controller/getQueryController');
 
 
+
 router.post('/addition', authMiddleware, validatorMiddleware(userSchemaYup), addCtrl);
 router.post('/subtraction', validatorMiddleware(userSchemaYup), subCtrl);
 router.post('/multiplication', validatorMiddleware(userSchemaYup), multCtrl);

@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const user = mongoose.Schema({
+  id:{
+    type:String,
+    required:true
+  },
   name: {
     type: String,
     required: true
@@ -12,6 +16,9 @@ const user = mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true
+  },
+  paymentId:{
+    type:String
   },
   password: {
     type: String,
@@ -25,16 +32,10 @@ const user = mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref:'payment'
   }],
-  cpf: {
-    type: String
-  },
-  cnpj: {
+  cpfCnpj: {
     type: String
   }
-
-
 }, { versionKey: false });
 
-// user model
 
 module.exports = mongoose.model('user', user);
