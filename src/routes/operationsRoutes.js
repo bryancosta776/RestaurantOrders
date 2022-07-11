@@ -2,11 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
+const searchParamsSchema = require('../schemas/searchParamsSchema');
 
 const userSchemaYup = require('../schemas/operationsSchema');
 
 const validatorMiddleware = require('../middleware/validatorMiddleware');
-
+const authMiddleware = require('../middleware/authMiddleware');
 
 router.use(express.urlencoded({ extended: true }));
 
@@ -16,18 +17,15 @@ const addCtrl = require('../controller/additionController');
 const subCtrl = require('../controller/subtracionController');
 const multCtrl = require('../controller/multiplicationController');
 const divCtrl = require('../controller/divisionController');
-const searchOperations = require('../controller/getQuery');
+const searchOperations = require('../controller/getQueryController');
 
 
 
-
-router.post('/addition', validatorMiddleware(userSchemaYup), addCtrl);
+router.post('/addition', authMiddleware, validatorMiddleware(userSchemaYup), addCtrl);
 router.post('/subtraction', validatorMiddleware(userSchemaYup), subCtrl);
 router.post('/multiplication', validatorMiddleware(userSchemaYup), multCtrl);
 router.post('/division', validatorMiddleware(userSchemaYup), divCtrl);
 router.get('/searchParams', validatorMiddleware(searchParamsSchema), searchOperations);
-
-router.use(errorMiddleware);
 
 
 module.exports = router;

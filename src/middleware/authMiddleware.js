@@ -1,20 +1,21 @@
 const jwt = require('../controller/jwt/jwt');
-const login = require('../models/loginModel');
+const login = require('../models/userModel');
 
 module.exports = async (req, res, next) => {
+  try {
     const token = req.headers.authorization.split(' ');
 
-  try {
     const payload =  jwt.verify(token[1]);
 
-    const user = await login.findById(payload.user_id);
+    const [user] = await login.find({ id:payload.user });
 
     if(!user) return res.status(401);
 
-    req.auth = user;
+    req.auth = { ...user.toObject() };
 
-    next();
-  } catch (error) {
-    return res.json(error).status(401);
+    return next();
+  } catch (err) {
+    console.log(err);
+    return next(new Error('Something wrong with credentials'));
   }
 };

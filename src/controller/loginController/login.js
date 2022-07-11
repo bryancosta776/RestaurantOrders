@@ -1,5 +1,5 @@
-const login = require('../models/loginModel');
-const jwt  = require('..jwt/jwt');
+const login = require('../../models/userModel');
+const jwt  = require('../jwt/jwt');
 
 const  crypto  =  require('crypto');
 
@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
  const [email, password]  = Buffer.from(hash, 'base64').toString().split(':');
 
  try {
-  const user = await login.findOne({ email });
+    const user = await login.findOne({ email });
 
    const encriptedPass = crypto.createHash('md5').update(password).digest('hex');
 
