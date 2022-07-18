@@ -18,6 +18,7 @@ const subCtrl = require('../controller/subtracionController');
 const multCtrl = require('../controller/multiplicationController');
 const divCtrl = require('../controller/divisionController');
 const searchOperations = require('../controller/getQueryController');
+const webhook = require('../controller/webhookController');
 
 
 
@@ -26,6 +27,6 @@ router.post('/subtraction', validatorMiddleware(userSchemaYup), subCtrl);
 router.post('/multiplication', validatorMiddleware(userSchemaYup), multCtrl);
 router.post('/division', validatorMiddleware(userSchemaYup), divCtrl);
 router.get('/searchParams', validatorMiddleware(searchParamsSchema), searchOperations);
-
+router.post('/webhook', webhook);
 
 module.exports = router;
