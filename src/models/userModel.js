@@ -34,6 +34,10 @@ const user = mongoose.Schema({
   }],
   cpfCnpj: {
     type: String
+  },
+  credits:{
+    type: Number,
+    default:0
   }
 }, { versionKey: false });
 

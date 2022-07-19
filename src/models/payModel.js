@@ -5,7 +5,14 @@ const Schema = mongoose.Schema;
 const payment = mongoose.Schema({
   client:{
     type: Schema.Types.ObjectId,
-    ref:'User'
+    ref:'user'
+  },
+  externalPaymentId: {
+    type: String,
+    required: true
+  },
+  status:{
+    type: String
   },
   paymentType: {
     type: String,
