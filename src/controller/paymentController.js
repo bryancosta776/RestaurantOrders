@@ -12,9 +12,9 @@ module.exports = async (req, res, next) => {
 
     let paymentId;
 
+    // id de usuario registrado no asaass
     if(!user.paymentId)
     {
-
       const customer =
         {
             'name': user.name,
@@ -45,12 +45,17 @@ module.exports = async (req, res, next) => {
     const { data } = await httpClient.post('/api/v3/payments', paymentInfo);
 
     const paymentResult = await payment.create({
+      externalPaymentId:data.id,
       client:user._id,
       paymentType,
       amount,
       paymentData:data
     });
 
+    // vinculando com usuário.
+    user.payments.push(paymentResult);
+
+    user.save();
 
     return res.status(200).json({ 'Dados do pagamento': paymentResult });
   } catch (error) {
