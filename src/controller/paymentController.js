@@ -59,7 +59,6 @@ module.exports = async (req, res, next) => {
 
     return res.status(200).json({ 'Dados do pagamento': paymentResult });
   } catch (error) {
-    console.log(error.response.data.errors);
     next(error);
   }
 };
