@@ -13,17 +13,10 @@ module.exports = async (req, res, next) => {
 
 
     const operationsResult = await operations.create({
-      operations: [
-        {
-          value1: value1,
-          value2: value2
-        },
-        {
-          value1: value1,
-          value2: value2
-        }
-      ]
-
+      value1,
+      value2,
+      operation: 'Addition',
+      result
     });
     user.credits = user.credits - operationCost;
 
@@ -32,27 +25,6 @@ module.exports = async (req, res, next) => {
 
     return res.status(200).json({ result: operationsResult });
   } catch(error) {
-    console.log(error);
     next(error);
   }
 };
-/* {
-      operations: [
-        {
-          value1: value1,
-          value2: value2
-        },
-        {
-          value1: value1,
-          value2: value2
-        }
-      ];
-
-
-      {
-          value1: value1,
-          value2: value2,
-          operation: 'Addition',
-          result: value1 + value2
-        }
-    } */
