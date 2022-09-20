@@ -1,4 +1,4 @@
-const operation = require('../models/operationsModel');
+const operationModel = require('../models/operationsModel');
 const users = require('../models/userModel');
 const operationCost = 1;
 
@@ -9,18 +9,32 @@ module.exports = async (req, res, next) => {
     if(user.credits < operationCost) {
       return res.status(200).json({ message:'Buy new credits to use this API' });
     }
-    const { value1, value2 } = req.body;
+    const { operations } = req.body;
 
-    result = value1 - value2;
+    const results = [];
 
-    const resultFinalSubtracion = await operation.create({
-      value1,
-      value2,
-      operation: 'Subtracion',
-      result
+    operations.forEach(async (op) => {
+      const { value1, value2 } = op;
+
+      sub = value1 - value2;
+
+      results.push({ result: sub, value1, value2, operation: 'Subtracion' });
+
+      await operationModel.create({
+        value1,
+        value2,
+        operation: 'Subtracion',
+        result: add
+      });
     });
 
-    return res.status(200).json({ resultFinalSubtracion });
+
+
+    user.credits = user.credits - operationCost;
+
+    await user.save();
+
+    return res.status(200).json({ results });
   } catch (error) {
     next(error);
   }

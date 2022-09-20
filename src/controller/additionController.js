@@ -18,7 +18,7 @@ module.exports = async (req, res, next) => {
 
       add = value1 + value2;
 
-      results.push({ result: add, value1, value2, operation: 'addition' });
+      results.push({ result: add, value1, value2, operation: 'Addition' });
 
       await operationsModel.create({
         value1,
