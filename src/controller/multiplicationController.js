@@ -29,8 +29,11 @@ module.exports = async (req, res) => {
     });
 
 
+    user.credits = user.credits - results.length;
 
-    user.credits = user.credits - operationCost;
+    if(user.credits < 0){
+      return res.status(200).json({ message: 'Buy new credits to use this API' });
+    }
 
     await user.save();
 
