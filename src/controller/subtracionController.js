@@ -13,6 +13,8 @@ module.exports = async (req, res, next) => {
 
     const results = [];
 
+    user.credits = user.credits - operations.length;
+
     operations.forEach(async (op) => {
       const { value1, value2 } = op;
 
@@ -26,14 +28,8 @@ module.exports = async (req, res, next) => {
         operation: 'Subtracion',
         result: add
       });
+
     });
-
-
-    user.credits = user.credits - results.length;
-
-    if(user.credits < 0){
-      return res.status(200).json({ message: 'Buy new credits to use this API' });
-    }
 
     await user.save();
 
