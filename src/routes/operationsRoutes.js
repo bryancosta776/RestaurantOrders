@@ -21,12 +21,13 @@ const searchOperations = require('../controller/getQueryController');
 const webhook = require('../controller/webhookController');
 
 
+router.post('/addition',  authMiddleware, validatorMiddleware(userSchemaYup),  addCtrl);
+router.post('/subtraction', authMiddleware, validatorMiddleware(userSchemaYup), subCtrl);
+router.post('/multiplication', authMiddleware, validatorMiddleware(userSchemaYup), multCtrl);
+router.post('/division', authMiddleware, validatorMiddleware(userSchemaYup), divCtrl);
+router.get('/searchParams', authMiddleware, authMiddlewarevalidatorMiddleware(searchParamsSchema), searchOperations);
 
-router.post('/addition', authMiddleware, validatorMiddleware(userSchemaYup), addCtrl);
-router.post('/subtraction', validatorMiddleware(userSchemaYup), subCtrl);
-router.post('/multiplication', validatorMiddleware(userSchemaYup), multCtrl);
-router.post('/division', validatorMiddleware(userSchemaYup), divCtrl);
-router.get('/searchParams', validatorMiddleware(searchParamsSchema), searchOperations);
+
 
 router.post('/webhook', webhook);
 
