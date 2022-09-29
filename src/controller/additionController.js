@@ -4,12 +4,17 @@ const operationCost = 1;
 
 module.exports = async (req, res, next) => {
   try {
-    const user = await users.findOne({ id: req.auth.id });
+    const user = await users.findById({ _id: req.auth._id });
+
+    const { operations } = req.body;
 
     if (user.credits < operationCost) {
       return res.status(200).json({ message: 'Buy new credits to use this API' });
     }
-    const { operations } = req.body;
+
+    if(user.credits < operations.length){
+      return res.status(200).json({ message: 'insufficient credit buy new credits to use this API' });
+    }
 
     const results = [];
 
