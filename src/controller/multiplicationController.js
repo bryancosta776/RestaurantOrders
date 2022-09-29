@@ -8,12 +8,8 @@ module.exports = async (req, res, next) => {
 
     const { operations } = req.body;
 
-    if(user.credits < operationCost){
-      return res.status(200).json({ message: 'Buy new credits to use this API' });
-    }
-
-    if(user.credits < operations.length){
-      return res.status(200).json({ message: 'insufficient credit buy new credits to use this API' });
+    if(user.credits < (operationCost * operations.length)) {
+      return res.status(200).json({ message:'Buy new credits to use this API' });
     }
 
 
