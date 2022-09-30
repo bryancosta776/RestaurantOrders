@@ -1,19 +1,39 @@
-const operations = require('../models/operationsModel');
+const operationsModel = require('../models/operationsModel');
+const users = require('../models/userModel');
+const operationCost = 1;
 
 module.exports = async (req, res, next) => {
   try {
-    const { value1, value2 } = req.body;
+    const user = await users.findById({ _id: req.auth._id });
 
-    resultAdd = value1 + value2;
+    const { operations } = req.body;
 
-    const resultFinalAdditio = await operations.create({
-      value1,
-      value2,
-      operation: 'Addition',
-      result: resultAdd
+    if(user.credits < (operationCost * operations.length)) {
+      return res.status(200).json({ message:'Buy new credits to use this API' });
+    }
+
+    const results = [];
+
+    user.credits = user.credits - operations.length;
+
+    operations.forEach(async (op) => {
+      const { value1, value2 } = op;
+
+      add = value1 + value2;
+
+      results.push({ result: add, value1, value2, operation: 'Addition' });
+
+      await operationsModel.create({
+        value1,
+        value2,
+        operation: 'Addition',
+        result: add
+      });
     });
 
-    return res.status(200).json({ resultFinalAdditio });
+    await user.save();
+
+    return res.status(200).json({ results });
   } catch (error) {
     next(error);
   }

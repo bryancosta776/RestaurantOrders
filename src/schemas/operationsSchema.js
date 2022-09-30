@@ -1,8 +1,8 @@
-const Yup = require('yup');
+const Joi = require('joi');
 
-module.exports = Yup.object({
-  body: {
-    value1: Yup.number().required(),
-    value2: Yup.number().required()
+module.exports = Joi.object({
+  req: {
+    value1: Joi.number().required(),
+    value2: Joi.number().required()
   }
-});
+}).unknown(true);
