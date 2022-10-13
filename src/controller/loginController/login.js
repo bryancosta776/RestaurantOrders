@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       token
   });
   } catch (error) {
-    console.log(error);
+
     return res.status(401).json(error);
   }
 };

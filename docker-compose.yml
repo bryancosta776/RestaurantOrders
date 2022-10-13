@@ -4,7 +4,7 @@ version: '3.8'
 services:
   mongo:
     image: mongo
-    container_name: mongo
+    container_name: mongo2
     restart: always
     ports:
       - 27017:27017
@@ -20,7 +20,7 @@ services:
     depends_on:
       - mongo
     environment:
-      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_SERVER: mongo2
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
@@ -29,7 +29,7 @@ services:
 
   api:
     image: node:latest
-    container_name: calculator
+    container_name: restaurantorders
     restart: always
     depends_on:
       - mongo

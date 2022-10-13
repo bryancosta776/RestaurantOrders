@@ -1,5 +1,5 @@
 {
-  "name": "calculatorbackend",
+  "name": "restaurantorders",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bryancosta776/CalculatorBackEnd.git"
+    "url": "git+https://github.com/bryancosta776/RestaurantOrders"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bryancosta776/CalculatorBackEnd/issues"
+    "url": "https://github.com/bryancosta776/RestaurantOrders/issues"
   },
-  "homepage": "https://github.com/bryancosta776/CalculatorBackEnd#readme",
+  "homepage": "https://github.com/bryancosta776/RestaurantOrders#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "express": "^4.17.3",

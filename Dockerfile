@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /calculator/app
+WORKDIR /restaurantorders/app
 
 COPY package*.json ./
 RUN npm install
