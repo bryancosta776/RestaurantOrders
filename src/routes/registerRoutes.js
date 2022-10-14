@@ -15,5 +15,4 @@ router.use(express.json());
 router.post('/register', validatorMiddleware(registerSchema), registerController);
 
 
-
 module.exports = router;
