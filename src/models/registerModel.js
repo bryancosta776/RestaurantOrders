@@ -32,7 +32,12 @@ const register = mongoose.Schema({
   state: {
     type: String,
     required: true
-  }
+  },
+  menu: [{
+    type: String,
+    ref: 'menu',
+    required: true
+  }]
 }, { versionKey: false });
 
 module.exports = mongoose.model('register', register);
