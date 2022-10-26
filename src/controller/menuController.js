@@ -1,31 +1,36 @@
-const menu = require('../models/menuModel');
+ const menuModel = require('../models/menuModel');
+ const merchantModel = require('../models/merchantModel');
 
-const register = require('../models/registerModel');
-
-module.exports = async (req, res, next) => {
+module.exports = {
+  create: async (req, res, next) => {
   try {
+    const { merchantId } = req.params;
+    const data = req.body;
 
-    const { menuOption } = req.body;
+    const result = await menuModel.create({ ...data, merchant:merchantId });
 
-    const resultMenu = [];
+    const merchant = await merchantModel.findById(merchantId);
 
-    menuOption.forEach(async (op) => {
-      const { name, id } = op;
+    merchant.menus.push(result);
 
-      resultMenu.push(name, id);
+    merchant.save();
 
-      const idRest = await register.findByIdAndUpdate(id);
-
-      idRest.menu.push(resultMenu);
-
-      resultMenus.menu.push({ resultMenu });
-
-    });
-
-
-    res.status(200).json({ resultMenu });
+    return res.status(200).json({ result });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next(error);
   }
+},
+list:async (req, res, next) => {
+  try {
+    const { menuId } = req.params;
+
+    const result = await menuModel.findById(menuId);
+
+    return res.status(200).json({ result });
+  } catch (error) {
+    // console.log(error);
+    next(error);
+  }
+}
 };
