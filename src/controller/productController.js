@@ -8,9 +8,9 @@ module.exports =  {
 
       const { merchantId } = req.params;
 
-      const result = await productModel.create({ ...data, merchant: merchantId });
-
       const merchant = await merchantModel.findById(merchantId);
+
+      const result = await productModel.create({ ...data, merchant });
 
       merchant.product.push(result);
 
