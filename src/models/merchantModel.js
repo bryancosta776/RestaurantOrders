@@ -37,6 +37,11 @@ const merchant = Schema({
     type: Schema.Types.ObjectId,
     ref: 'menus',
     required: true
+  }],
+  product: [{
+    type: Schema.Types.ObjectId,
+    ref: 'product',
+    required: true
   }]
 }, { versionKey: false });
 
