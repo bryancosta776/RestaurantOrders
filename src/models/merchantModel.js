@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const register = mongoose.Schema({
+const merchant = Schema({
   name: {
     type: String,
     required: true
@@ -32,7 +32,17 @@ const register = mongoose.Schema({
   state: {
     type: String,
     required: true
-  }
+  },
+  menus: [{
+    type: Schema.Types.ObjectId,
+    ref: 'menus',
+    required: true
+  }],
+  product: [{
+    type: Schema.Types.ObjectId,
+    ref: 'product',
+    required: true
+  }]
 }, { versionKey: false });
 
-module.exports = mongoose.model('register', register);
+module.exports = model('merchants', merchant);
