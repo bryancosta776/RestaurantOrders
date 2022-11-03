@@ -9,7 +9,17 @@ const product = Schema({
     type: Number,
     required: true
   },
-  merchant: { type: Schema.Types.ObjectId, ref: 'merchants' }
+  merchant: {
+    type: Schema.Types.ObjectId,
+    ref: 'merchants',
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  }
+
+
 }, { versionKey: false });
 
 

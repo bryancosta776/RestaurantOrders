@@ -4,19 +4,21 @@ const merchantModel = require('../models/merchantModel');
 module.exports =  {
   create: async (req, res, next) =>{
     try {
-      const data  = req.body;
+    const { ...data }  = req.body;
 
-      const { merchantId } = req.params;
+    const { merchantId } = req.params;
 
-      const merchant = await merchantModel.findById(merchantId);
+    const merchantResult = await merchantModel.findById(merchantId);
 
-      const result = await productModel.create({ ...data, merchant });
+    const productResult = await productModel.create({ ...data, merchant: merchantResult });
 
-      merchant.product.push(result);
+    merchantResult.product.push(productResult);
 
-      merchant.save();
+    merchantResult.save();
 
-      res.status(200).json(result);
+    productResult.save();
+
+    res.status(200).json({ merchantResult });
     } catch (error) {
       next(error);
     }

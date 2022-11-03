@@ -12,6 +12,8 @@ const merchantController = require('../controller/merchantController');
 
 const productController = require('../controller/productController');
 
+const categoryController = require('../controller/categoryController');
+
 const merchantSchema = require('../schemas/merchantSchema');
 
 
@@ -32,6 +34,8 @@ router.get('/merchant/:merchantId/menu/:menuId',  /* validatorMiddleware(menuSch
 router.post('/product/:merchantId', /* validatorMiddleware(menuSchema) */ productController.create);
 
 router.get('/product/:productId', /* validatorMiddleware(menuSchema) */ productController.list );
+
+router.post('/category/:menuId/menu',   categoryController.create );
 
 router.use(errorMiddleware);
 

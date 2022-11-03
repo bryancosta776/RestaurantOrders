@@ -15,7 +15,7 @@ module.exports = {
   },
   list: async (req, res, next)=>{
     try {
-      const result = await merchant.findById(req.query.merchantId).populate('menus');
+      const result = await merchant.findById(req.query.merchantId).populate('product');
 
       return res.status(200).json({ ...result._doc });
 

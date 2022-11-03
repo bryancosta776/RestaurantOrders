@@ -1,14 +1,15 @@
 const { Schema, model } = require('mongoose');
 
-const menu = Schema({
+const category = Schema({
   name: {
     type: String,
     required: true
   },
-  merchant: {
+  menu: {
     type: Schema.Types.ObjectId,
-    ref: 'merchants' }
+    ref: 'menus'
+  }
 
 }, { versionKey: false });
 
-module.exports = model('menus', menu);
+module.exports = model('category', category);
