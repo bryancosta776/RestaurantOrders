@@ -4,20 +4,22 @@
 module.exports = {
   create: async (req, res, next) => {
   try {
+    const data  = req.body;
+
     const { merchantId } = req.params;
-    const data = req.body;
 
-    const result = await menuModel.create({ ...data, merchant:merchantId });
+    const merchantResult = await merchantModel.findById(merchantId);
 
-    const merchant = await merchantModel.findById(merchantId);
+    const menuResult = await menuModel.create({ ...data, merchant: merchantId });
 
-    merchant.menus.push(result);
+    merchantResult.menus.push(menuResult);
 
-    merchant.save();
+    merchantResult.save();
 
-    return res.status(200).json({ result });
+    menuResult.save();
+
+    return res.status(200).json({ merchantResult });
   } catch (error) {
-    // console.log(error);
     next(error);
   }
 },

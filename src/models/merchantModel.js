@@ -42,6 +42,11 @@ const merchant = Schema({
     type: Schema.Types.ObjectId,
     ref: 'product',
     required: true
+  }],
+  category: [{
+    type: Schema.Types.ObjectId,
+    ref: 'product',
+    required: true
   }]
 }, { versionKey: false });
 
